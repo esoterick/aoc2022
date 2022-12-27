@@ -3,16 +3,50 @@ use std::fs;
 
 fn main() -> color_eyre::Result<()> {
     let a: String = "inputs/day3/assert.1.txt".to_string();
-    assert!(calculate_day3(a) == 157, "fak");
+    assert!(calculate_day3(&a) == 157, "fak");
+    assert!(calculate_part2(&a) == 70, "fak part deux");
 
     let b: String = "inputs/day3/input.1.txt".to_string();
-    let result = calculate_day3(b);
+    let result = calculate_day3(&b);
+    println!("result: {}", result);
+
+    let result = calculate_part2(&b);
     println!("result: {}", result);
 
     Ok(())
 }
 
-fn calculate_day3(file_name: String) -> i32 {
+fn calculate_part2(file_name: &String) -> i32 {
+    let sacks: Vec<String> = fs::read_to_string(file_name)
+        .expect("day3 assert file to exist")
+        .trim()
+        .split("\n")
+        .map(|x| x.to_string())
+        .collect();
+    dbg!(&sacks);
+
+    return find_group_badges(sacks).iter().sum();
+}
+
+fn find_group_badges(v: Vec<String>) -> Vec<i32> {
+    let mut badges: Vec<i32> = Vec::new();
+
+    for (a, b, c) in v.iter().tuples() {
+        for x in a.chars() {
+            if b.contains(x) && c.contains(x) {
+                // dbg!(a, b, c, x);
+                badges.push(get_priority(x));
+                break;
+            }
+        }
+    }
+
+    dbg!(&badges);
+
+    return badges;
+}
+
+fn calculate_day3(file_name: &String) -> i32 {
     let sacks: Vec<String> = fs::read_to_string(file_name)
         .expect("day3 assert file to exist")
         .trim()
