@@ -1,6 +1,6 @@
 use itertools::Itertools;
+use std::fs;
 use std::ops::RangeInclusive;
-use std::{cmp, fs};
 
 trait InclusiveRangeExt {
     fn contains_range(&self, other: &Self) -> bool;
