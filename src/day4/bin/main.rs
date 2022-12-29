@@ -133,31 +133,31 @@ fn find_overlap(elves: ((i32, i32), (i32, i32))) -> i32 {
     return 0;
 }
 
-fn find_partial_overlap(elves: ((i32, i32), (i32, i32))) -> i32 {
-    let ll = elves.0 .0;
-    let lr = elves.0 .1;
-    let rl = elves.1 .0;
-    let rr = elves.1 .1;
+// fn find_partial_overlap(elves: ((i32, i32), (i32, i32))) -> i32 {
+//     let ll = elves.0 .0;
+//     let lr = elves.0 .1;
+//     let rl = elves.1 .0;
+//     let rr = elves.1 .1;
 
-    if on_segment(ll, lr, rl) > 0 {
-        return 1;
-    }
-    if on_segment(lr, rl, rr) > 0 {
-        return 1;
-    }
-    if on_segment(rl, rr, ll) > 0 {
-        return 1;
-    }
-    if on_segment(rr, ll, lr) > 0 {
-        return 1;
-    }
+//     if on_segment(ll, lr, rl) > 0 {
+//         return 1;
+//     }
+//     if on_segment(lr, rl, rr) > 0 {
+//         return 1;
+//     }
+//     if on_segment(rl, rr, ll) > 0 {
+//         return 1;
+//     }
+//     if on_segment(rr, ll, lr) > 0 {
+//         return 1;
+//     }
 
-    return 0;
-}
+//     return 0;
+// }
 
-fn on_segment(p: i32, q: i32, r: i32) -> i32 {
-    if q <= cmp::max(p, r) && q >= cmp::min(p, r) {
-        return 1;
-    }
-    return 0;
-}
+// fn on_segment(p: i32, q: i32, r: i32) -> i32 {
+//     if q <= cmp::max(p, r) && q >= cmp::min(p, r) {
+//         return 1;
+//     }
+//     return 0;
+// }
